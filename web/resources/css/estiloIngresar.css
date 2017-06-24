@@ -1,0 +1,31 @@
+body{
+	font-family: verdana;
+}
+.shadow{
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.well{
+	padding: 20px 50px;
+	color: #000;
+}
+.well h2{
+	color: #ea533f;
+}
+.well .checkbox{
+	margin-top: 15px;
+	margin-left: -20px;
+}
+/*.well hr{
+	border-color: #faa;
+}*/
+.well button{
+	background-color: #ea533f;
+	border-color: #e73e28;
+	color: #fff;
+	padding: 5px;
+	margin-top: 15px;
+}
+.well button:hover{
+	background-color: #de2f18;
+	border-color: #be2815;
+}

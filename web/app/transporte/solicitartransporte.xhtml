@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{msjApp.titleSolicitar}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: orange" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form prependId="false">
+                <div class="container form-horizontal">
+                    <div id="campos">
+                        <br/>
+
+                        <div align="center" class="container">
+                            <div id="row" class="row">
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.destinoTransporte}" for="detinoTransporte" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="detinoTransporte" value="#{ofertaTransporteController.destino}" title="#{language.CreateOfertatransporteTitle_detinoTransporte}" required="true" requiredMessage="#{msjApp.destinoTransporteRequiredMessage}" p:placeholder="Ejemplo: Bogota Cra a #b-c"/>
+                                        </div>
+                                    </div>
+                                </div>                               
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="Detalles: *" for="detallesTransporte" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="detallesTransporte" value="#{ofertaTransporteController.detalles}" title="#{language.CreateOfertatransporteTitle_detallesTransporte}" required="true" requiredMessage="#{msjApp.detallesRequiredMessage}" p:placeholder="..."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div id="row" class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <label class="control-label col-xs-2">Calificacion: *</label>
+                                        <div class="col-xs-10">
+                                            <h:inputText id="calificacion" value="#{ofertaTransporteController.calificacion}" title="#{language.CreateOfertatransporteTitle_calificacion}" required="true" requiredMessage="#{msjApp.calificacionRequiredMessage}" p:placeholder="Alta, media o baja"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <br/>
+                            <br/>
+                            <div id="row" class="row">
+                                
+                            </div>
+
+                            <div id="row" class="row">
+                                
+                            </div>
+                            <HR width="100%" align="left"/>
+                            <div id="botonesPC" class="col-xs-10">
+                                <h:commandLink class="btn btn-primary btn3d" action="#{ofertaTransporteController.registrarSolicitud()}" value="Publicar"/>
+                                <h:commandLink class="btn btn-default btn3d" action="#{ofertatransporteController.prepareList}" value="Cancelar"  immediate="true"/>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,29 @@
+button{
+	border-radius: 5px;
+	border-color: black;
+	background: black;
+	padding: 10px;
+}
+.b{
+	color: white;
+}
+.c{
+	color: #444;
+	font-size: 25px;
+	margin: 4%;
+}
+.but{
+	color: white;
+}
+button:hover{
+	background-color: white;
+	border-color: white;
+	color: black;
+	transition: 1s;
+}
+.btn span.glyphicon {    			
+	opacity: 0;				
+}
+.btn.active span.glyphicon {				
+	opacity: 1;				
+}

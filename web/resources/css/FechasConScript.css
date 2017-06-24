@@ -1,0 +1,15 @@
+#Fecha{
+width: 10%;
+height: auto;
+
+}
+#form1{
+	float: left;
+}
+#form2{
+	float: left;
+	margin-left: 3px;
+}
+#form3{
+	float: right;
+}

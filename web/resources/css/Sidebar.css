@@ -1,0 +1,8 @@
+.item {
+        height:50px;
+        overflow:hidden;
+        color:#fff;
+    }
+.item:hover {
+        background-color:#fff;
+        }

@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Nueva Oferta"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: orange" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <div class="container form-horizontal">
+                    <div id="campos">
+                        <br/>
+
+                        <div align="center" class="container">
+                            <div id="row" class="row">
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{language.EditOfertatransporteLabel_idtransporte}" for="idtransporte" />
+                                        <div class="col-xs-10">
+                                            <h:inputText id="idtransporte" value="#{ofertaTransporteController.selected.idtransporte}" title="#{language.EditOfertatransporteTitle_idtransporte}" required="true" requiredMessage="#{language.EditOfertatransporteRequiredMessage_idtransporte}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{language.CreateOfertatransporteLabel_detinoTransporte}" for="detinoTransporte" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="detinoTransporte" value="#{ofertaTransporteController.selected.detinoTransporte}" title="#{language.CreateOfertatransporteTitle_detinoTransporte}" required="true" requiredMessage="#{language.CreateOfertatransporteRequiredMessage_detinoTransporte}" p:placeholder="Cra b #a-b"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{language.CreateOfertatransporteLabel_detallesTransporte}" for="detallesTransporte" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="detallesTransporte" value="#{ofertaTransporteController.selected.detallesTransporte}" title="#{language.CreateOfertatransporteTitle_detallesTransporte}" required="true" requiredMessage="#{language.CreateOfertatransporteRequiredMessage_detallesTransporte}" p:placeholder="..."/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br/>
+                            <div id="row" class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{language.CreateOfertatransporteLabel_calificacion}" for="calificacion" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="calificacion" value="#{ofertaTransporteController.selected.calificacion}" title="#{language.CreateOfertatransporteTitle_calificacion}" required="true" requiredMessage="#{language.CreateOfertatransporteRequiredMessage_calificacion}"  p:placeholder="Alta, media, regular y baja."/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+                            <br/>
+                            <br/>
+                            <HR width="100%" align="left"/>
+                            <div id="botonesPC" class="col-xs-10">
+                                <h:commandLink class="btn btn-primary btn3d" action="#{ofertaTransporteController.update()}" value="Guardar" />
+                                <h:commandLink class="btn btn-default" action="#{ofertatransporteController.prepareList}" value="Cancelar" immediate="true"/>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition> 
+</html>
+

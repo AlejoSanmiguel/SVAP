@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <header id="nav">
+        <nav class="navbar navbar-inverse fixed">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#{request.contextPath}/svap/index.xhtml"><img src="#{request.contextPath}/resources/imgs/Favicon.png" width="25" height="25" margin-left="5" alt="Logo"/></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <li><a href="#{request.contextPath}/svap/index.xhtml">Inicio</a></li>
+                            <li><a href="#{request.contextPath}/svap/ofertas.xhtml">Ofertas</a></li>
+                            <ul class="nav navbar-nav">
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Buscar"/>
+                        </div>
+                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Iniciar sesión<span class="caret"></span></a>
+                            <div class=" dropdown-menu">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="account-box">
+                                            <form class="form-signin" action="#">
+                                                <div class=" form-group">
+                                                    <center><img src="#{request.contextPath}/resources/imgs/Logo.png" width="200" height="70" alt="Logo"/></center>
+                                                </div>
+
+                                                <br/>
+                                                <div class="form-group">
+                                                    <input type="text" minlenght="8" required="" maxlength="16" class="form-control" id="numeroDoc" placeholder="Número de documento"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" minlenght="8" maxlenght="20" class="form-control" id="password" placeholder="Contraseña"/>
+                                                </div>
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="remember-me"/><font size="2">  Mantener sesion iniciada</font>
+                                                </label>
+                                                <button class="btn btn-lg btn-block purple-bg" type="submit" >
+                                                    Iniciar sesion</button>
+                                                <button class="btn btn-lg btn-block purple-bg" type="submit" > Registrate</button>
+
+                                                <center>
+                                                    <a class="forgotLnk" href="http://www.jquery2dotnet.com">¿No puedes iniciar sesión?</a>
+                                                    <a href="">¿Olvidaste tu contraseña?</a>
+                                                </center>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+</html>
+

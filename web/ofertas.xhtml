@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/WEB-INF/template/templatee.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{msjApp.outputTextMisOfertas}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <br></br>
+            <br></br>
+
+
+
+
+            <!--<h:panelGrid >-->
+            <div class="container containerOf">
+                <div id="soffers" class="row"> 
+                    <h:form prependId="false">
+                        <p:outputPanel>
+                            <p:dataGrid value="#{ofertaController.ofertas}" var="o">
+
+
+
+                                <h:link outcome="#{ofertaController.prepareView(o)}" class="fonoffer">
+                                    <div id="offer" class="img-rounded imagen2 color2 col-xs-12 col-sm-5 col-md-12 col-lg-3">
+                                        <div class="thumbail">				
+                                            <div id="info" class="caption img-rounded">
+                                                <p id="headline">#{o.productoIdproducto}</p>
+                                                <!--<h:outputLabel id="info2" class="color1" value="#{o.cantidadProducto}"/>-->
+                                                <p id="info2" class="color1">#{o.cantidadProducto}</p>
+                                                <p id="headline">#{o.fechaLimite}</p>
+                                                <p id="info3" class="color1">3 Dias</p>
+                                                <div id="precio" class="list-items-hover ">
+                                                    <span class="ch-price">$ #{o.precioOferta}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="#{request.contextPath}/resources/imgs/Imagen-nodisponible.jpg" class="img-rounded" style="width: 100%; height: 100%; min-width: 276px;
+                                             max-width: 276px; min-height: 187.3px;
+                                             max-height: 187.3px; margin-left: -6%;" alt="No disponible"/>
+                                    </div>
+                                </h:link>
+
+
+                            </p:dataGrid>
+                        </p:outputPanel>
+                    </h:form>
+                </div>
+            </div>
+            <!--</h:panelGrid>-->
+
+
+        </ui:define>
+    </ui:composition>
+</html>
+

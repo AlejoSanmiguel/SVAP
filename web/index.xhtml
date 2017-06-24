@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pr="http://primefaces.org/ui">
+    <h:head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale1.0, minimum-scale=1.0"/>
+        <title>SVAP</title>
+
+        <link rel="shortcut icon" href="#{request.contextPath}/resources/imgs/Favicon.png"/>  
+        <h:outputStylesheet name="frameworks/bootstrap/css/bootstrap.css"/>
+        <h:outputStylesheet name="css/Index.css"/>
+        <h:outputStylesheet name="css/font-awesome.css"/>
+        <h:outputStylesheet name="css/formValidation.min.css"/>
+        <h:outputStylesheet name="css/sweetalert.css"/>
+
+        <!--
+        <h:outputStylesheet library="CSS" name="bootstrap.css"/>
+        <h:outputStylesheet library="CSS" name="Index.css"/>
+        -->
+        <!--<h:outputScript name="js/jquery-2.2.3.js"/>-->
+        <h:outputScript library="frameworks" name="bootstrap/js/bootstrap.min.js"/>        
+        <h:outputScript library="js" name="sweetalert.min.js"/>
+        <h:outputScript library="js" name="formValidation.min.js"/>
+        <h:outputScript library="js" name="inicioregistro.js"/>
+        <!--<h:outputScript library="js" name="validacion.js"/>-->
+        <script>
+            $().ready(function () {
+                $('input[type="submit"]').click(function (e) {
+
+                    usuario = $('.numeroDoc').val();
+                    clave = $('.password').val();
+                    if (usuario === 0 || clave === '') {
+                        e.preventDefault();
+                        sweetAlert("Oops...", "No has ingresado tus datos, Intentalo de nuevo");
+                    } else if (usuario === '' || clave === '') {
+                        e.preventDefault();
+                        sweetAlert("Oops...", "No has ingresado tu documento, Intentalo de nuevo");
+                    } else {
+
+                    }
+                    ;
+                });
+
+            });
+        </script>
+    </h:head>
+    <h:body>
+        <f:view locale="#{usuarioController.languageSelected}">
+            <br/>
+            <header>
+                <!-- Navbar -->
+                <nav class="navbar navbar-transparent">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="fa fa-bars"></span>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <div id="BotonesIndex" class="btn-group btn-group-justified" role="group" aria-label="...">
+                                    <li><article class="col-xs- col-sm-2 col-md-2 col-lg-2"></article></li>
+                                    <li>
+                                        <article class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            <button data-toggle="modal" data-target="#Mision" type="button" class="btn btn-index btn-lg btn-block center-block btn3d" >#{msjApp.buttonMision}</button>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            <button data-toggle="modal" data-target="#Vision" type="button" class="btn btn-index btn-lg btn-block center-block btn3d" color="white">#{msjApp.buttonVision}</button>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            <button data-toggle="modal" data-target="#QuienesSomos" type="button" class="btn btn-index btn-lg btn-block center-block btn3d">#{msjApp.buttonQuienesSomos}</button>
+                                        </article>
+                                    </li>
+                                    <li>
+                                        <article class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            <button data-toggle="modal" data-target="#Contactanos" type="button" class="btn btn-index btn-lg btn-block center-block btn3d">#{msjApp.buttonContactanos}</button>
+                                        </article>
+                                    </li>
+                                    <h:form id="form-login" prependId="false">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                #{msjApp.idioma} <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <c:forEach items="#{usuarioController.supportLanguages}" var="l" >
+                                                    <li>
+                                                        <h:commandLink  value="#{msjApp[l.displayLanguage]}" action="#{usuarioController.cambiarIdioma(l)}">
+                                                            <img src="#{request.contextPath}/resources/imgs/languages/#{l.language}.png" width="25px" alt="#{msjApp[l.displayLanguage]}"/>
+                                                        </h:commandLink>
+                                                    </li>
+                                                </c:forEach>
+                                            </ul>
+                                        </div>
+                                    </h:form>
+                                    <li><article class="col-xs- col-sm-2 col-md-2 col-lg-2"></article></li>
+                                </div>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+                <br/>
+                <!-- Fin navabar -->
+            </header>
+            <main>
+                <div class="row">
+                    <div class="container-fluid">
+                        <center><section id="Fondo" class="row">
+                                <article class="col-xs- col-sm-4 col-md-4 col-lg-4"></article>
+                                <article class="col-xs- col-sm-4 col-md-4 col-lg-4">
+                                    <br/><br/><center><div id="LogoIndex" width="370" height="170"><img src="#{request.contextPath}/resources/imgs/Logo.png" alt="LogoSVAP" width="100%" height="100%"></img></div></center>
+                                </article>
+                                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <center id="TituloI"><font color="#FFF"><p> #{msjApp.articleCenterSVAPSig}</p></font></center>
+                                </article>
+
+                                <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <center><a type="button" class="btn btn-info btn-lg btn3d" href="#{request.contextPath}/svap/ofertas.xhtml"> <i class="fa fa-shopping-cart"></i>  #{msjApp.articleVerOfertas}</a></center>
+                                </article>
+                                <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <center><div class=""><button type="button" class="btn btn-info btn-lg btn-block btn3d" data-toggle="modal" data-target="#squarespaceModal"><i class="glyphicon glyphicon-user"></i>#{msjApp.buttonIniciarSesion}</button></div>
+
+
+                                        <!-- line modal -->
+                                        <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" style="display: none;">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!--                                                    <div class="modal-header">
+                                                                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">#{msjApp.buttonSpanCerrar}</span></button>
+                                                                                                            <h3 class="modal-title" id="lineModalLabel"> #{msjApp.buttonIniciarSesion}</h3>
+                                                                                                        </div>-->
+                                                    <div class="modal-body">
+
+                                                        <!-- content goes here -->
+
+                                                        <div class="panel panel-login">
+                                                            <div class="panel-heading">
+                                                                <div class="row">
+                                                                    <div class="col-xs-6">
+                                                                        <a href="#" class="active" id="login-form-link">#{msjApp.buttonIniciarSesion}</a>
+                                                                    </div>
+                                                                    <div class="col-xs-6">
+                                                                        <a href="#" id="register-form-link">#{msjApp.buttonRegistrate}</a>
+                                                                    </div>
+                                                                </div>
+                                                                <hr/>
+                                                                <h:form>
+                                                                    <h:panelGroup id="messagePanel" layout="block">
+                                                                        <h:messages errorStyle="color: orange" infoStyle="color: green" layout="table"/>
+                                                                    </h:panelGroup>
+                                                                </h:form>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <h:form id="login-form" role="form" style="display: block;">
+                                                                            <div class="form-group">
+                                                                                <pr:inputText class="form-control numeroDoc" maxlength="10" p:placeholder="#{msjApp.placeHolderNoDocumento}" id="numeroDoc"  p:autfocus="true" value="#{usuarioController.noCedula}">
+                                                                                    <pr:keyFilter regEx="/[\d\-\.]/"/>
+                                                                                </pr:inputText>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <h:inputSecret id="password" class="form-control password" p:placeholder="#{msjApp.placeHolderContraseña}" value="#{usuarioController.contraseña}"/>
+                                                                            </div>
+                                                                            <label class="checkbox">
+                                                                                <input size="2" type="checkbox" value="remember-me">  #{msjApp.inputMantenerSesion}</input>
+                                                                            </label>
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-6 col-sm-offset-3">
+                                                                                        <h:commandButton  type="submit" style="color: white;" id="BotonesIndex" class="btn btn-lg btn-index  btn3d" value="#{msjApp.inputValueIngresar}" action="#{usuarioController.action()}"/>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12">
+                                                                                        <div class="text-center">
+                                                                                            <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </h:form>
+                                                                        <h:form id="register-form" role="form" style="display: none;">
+
+
+                                                                            <div class="form-group">
+                                                                                <h:inputText class="form-control " p:placeholder="#{msjApp.inputPrimerNombre}" id="primerNombre" required='true' p:autfocus="true" value="#{usuarioController.primerNombre}" requiredMessage="#{msjApp.inputNoCedulaRequiredMessage}"/>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <h:inputText class="form-control " p:placeholder="#{msjApp.inputPrimerApellido}" id="primerApellido" required='true' p:autfocus="true" value="#{usuarioController.primerApellido}"/>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <pr:inputText class="form-control" p:placeholder="#{msjApp.inputCorreoElectronico}" id="correoElectronico" required='true' p:autfocus="true" value="#{usuarioController.correoElectronico}">
+                                                                                    <pr:keyFilter regEx="/[a-z0-9_\.\-@]/i"/>
+                                                                                </pr:inputText>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <pr:inputText class="form-control" p:placeholder="#{msjApp.inputNumeroTelefono}" maxlength='10' id="numeroTelefono" required='true' p:autfocus="true" value="#{usuarioController.numeroTel}">
+                                                                                    <pr:keyFilter regEx="/[\d\-\.]/"/>
+                                                                                </pr:inputText>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <h:inputSecret class="form-control" p:placeholder="#{msjApp.inputContraseña}" maxlength='30' id="contraseña" required='true' p:autfocus="true" value="#{usuarioController.contraseña}"/>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <pr:inputText required='true' p:autfocus="true" class="form-control" id="text1"  maxlength="10" value="#{usuarioController.noCedula}" p:placeholder="#{msjApp.inputNoCedula}">
+                                                                                    <pr:keyFilter regEx="/[\d\-\.]/"/>
+                                                                                </pr:inputText> 
+                                                                            </div>
+                                                                            <h:selectOneMenu class="form-group" id="tipodocumentosidDoc" value="#{usuarioController.sigla}"  required="true" >
+                                                                                <f:selectItem itemValue="C.C" itemLabel="#{msjApp.selectItemTipoDocumento1}" />
+                                                                                <f:selectItem itemValue="C.E" itemLabel="#{msjApp.selectItemTipoDocumento2}" />
+                                                                            </h:selectOneMenu>
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-6 col-sm-offset-3">
+                                                                                        <h:commandLink type="submit" id="BotonesIndex" style="color: white;" class="btn btn-lg btn-index  btn3d" value="#{msjApp.h1CrearCuenta}" action="#{usuarioController.registrarUsuario()}"/>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </h:form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <center>
+
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </center>
+                                </article>
+                                <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <center><a type="button" class="btn btn-info btn-lg btn3d" href="#{request.contextPath}/svap/Error404.xhtml"> <i class="fa fa-file-text"></i>  #{msjApp.documentacion}</a>
+                                    </center>
+                                </article>
+                            </section></center> 
+
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </main>
+            <main id="Contenido">
+                <!-- Mision -->
+                <div class="modal fade" id="Mision" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">#{msjApp.buttonSpanCerrar}</span></button>
+                                <center><h3 class="modal-title" id="lineModalLabel">#{msjApp.buttonMision}</h3></center>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- content goes here -->
+                                <form>
+                                    <p class="Textos">#{msjApp.cuerpoMision}</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Mision -->
+                <!-- Vision -->
+                <div class="modal fade" id="Vision" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">#{msjApp.buttonSpanCerrar}</span></button>
+                                <center><h3 class="modal-title" id="lineModalLabel">#{msjApp.buttonVision}</h3></center>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- content goes here -->
+                                <form>
+                                    <p class="Textos">#{msjApp.cuerpoVision}</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Vision -->
+                <!-- Inicio QuienesSomos -->
+                <div class="modal fade" id="QuienesSomos" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">#{msjApp.buttonSpanCerrar}</span></button>
+                                <center><h3 class="modal-title" id="lineModalLabel">#{msjApp.buttonQuienesSomos}</h3></center>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- content goes here -->
+                                <form>
+                                    <center><p class="Textos">#{msjApp.cuerpoQuinesSomos}</p></center>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin QuienesSomos -->
+                <!-- Inicio Contactanos -->
+                <div class="modal fade" id="Contactanos" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">#{msjApp.buttonSpanCerrar}</span></button>
+                                <center><h3 class="modal-title" id="lineModalLabel">#{msjApp.buttonContactanos}</h3></center>
+                            </div>
+                            <div class="modal-body">
+
+                                <!-- content goes here -->
+                                <form>
+                                    <center><p class="Textos">#{msjApp.cuerpoContactanos1} </p> </center>
+                                    <center><p class="Textos">#{msjApp.cuerpoContactanos2}</p> </center>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </f:view>
+    </h:body>
+</html>

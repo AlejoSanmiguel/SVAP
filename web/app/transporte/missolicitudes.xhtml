@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{msjApp.outputTextMisOfertas}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{msjApp.outputTextSinOferta2}" rendered="#{ofertaTransporteController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{ofertaTransporteController.items.rowCount > 0}">
+                    <h:outputText value="#{ofertaTransporteController.pagination.pageFirstItem + 1}..#{ofertaTransporteController.pagination.pageLastItem + 1}/#{ofertaTransporteController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{oferTatransporteController.previous}" value="#{language.Previous} #{ofertaTransporteController.pagination.pageSize}" rendered="#{ofertaTransporteController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{oferTatransporteController.next}" value="#{language.Next} #{ofertaTransporteController.pagination.pageSize}" rendered="#{ofertaTransporteController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable class="table" value="#{ofertaTransporteController.ofertas}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{language.ListOfertatransporteTitle_idtransporte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idtransporte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{language.ListOfertatransporteTitle_detinoTransporte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detinoTransporte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{language.ListOfertatransporteTitle_detallesTransporte}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.detallesTransporte}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{language.ListOfertatransporteTitle_calificacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.calificacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <em align="center" class="fa fa-cog cog llave"></em>
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <div align="center">
+                                <h:commandLink class="btn btn-default fa fa-eye" action="#{ofertatransporteController.prepareView}"/>
+                                <h:commandLink class="btn btn-default fa fa-pencil a" action="#{ofertaTransporteController.prepareEdit}"/>
+                                <h:commandLink class="btn btn-danger fa fa-trash a" action="#{ofertaTransporteController.destroy(item)}"/>
+                            </div>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+

@@ -1,0 +1,32 @@
+header{
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+}
+.MenuPrincipal{
+	background-color: #3F00ff;
+	color: #fff;
+}
+article{
+	background-color: #ccc;
+	color: #fff;
+	text-align: center;
+}
+aside{
+	background-color: #00f;
+	color: #fff;
+	text-align: center;
+}
+.color1{
+	background-color: rgba(200, 250, 255, .7);
+
+}
+.color2{
+	background-color: rgba(200, 200, 255, .7);
+
+}
+footer{
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+}

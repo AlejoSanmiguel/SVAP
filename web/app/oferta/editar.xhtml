@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{language.EditOfertaproductoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false">
+                    <div class="container form-horizontal">
+                    <div id="campos" class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <br/>
+
+                        <div align="center" class="container">
+                            <div id="row" class="row">
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="Cantidad Bultos: *" for="cantidadProducto" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="cantidadProducto" value="#{ofertaController.ofertaSeleccionada.cantidadProducto}" title="#{language.CreateOfertaproductoTitle_cantidadProducto}" required="true" requiredMessage="#{msjApp.cantidadProductoRequiredMessage}" p:placeholder="Min. 20"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<pr:row>-->  
+<!--            <pr:column>
+                <pr:inputNumber id="Input7" value="#{inputNumberView.input7}" symbol="%" 
+                                symbolPosition="s" emptyValue="sign">  
+                    <pr:ajax update="output7" />  
+                </pr:inputNumber>
+            </pr:column>
+            <pr:column>
+                <pr:inputText id="output7" disabled="true" value="#{inputNumberView.input7}"/>  
+            </pr:column>
+            <pr:column>
+                Empty value (sign)
+            </pr:column>  
+        </pr:row>-->
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="Valor c/u: *" for="precioOferta" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="precioOferta" value="#{ofertaController.ofertaSeleccionada.precioOferta}" title="#{language.CreateOfertaproductoTitle_precioOferta}" required="true" requiredMessage="#{msjApp.precioOfertaRequiredMessage}" p:placeholder="$"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br/>
+                            <div id="row" class="row">
+                                <center></center>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="Tipo de Papa: *" for="productoIdproducto" />
+                                        <div class="col-xs-10">
+                                            <h:outputText class="form-control" id="productoIdproducto" value="#{ofertaController.ofertaSeleccionada.productoIdproducto}" title="#{language.CreateOfertaproductoTitle_productoIdproducto}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="Observaciones: *" for="detalles" />
+                                        <div class="col-xs-10">
+                                            <h:inputTextarea class="form-control" id="detalles" value="#{ofertaController.ofertaSeleccionada.detalles}" title="#{language.CreateOfertaproductoTitle_detalles}" required="true" requiredMessage="#{msjApp.detallesRequiredMessage}" p:placeholder="..."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div id="row" class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <label class="control-label col-xs-2">Selecciona una fota para la oferta:*</label>
+                                        <div class="col-xs-10">
+                                            <div id="camuppload" class="ui-group-buttons">
+
+                                                <h:inputText id="foto" class="btn btn-default " label="Foto" value="#{ofertaController.ofertaSeleccionada.foto}" requiredMessage="#{msjApp.fotoRequiredMessage}">Tomar foto</h:inputText>    
+                                                <!--                                                <a href="http://www.jquery2dotnet.com" class="btn btn-default" role="button"><span class="glyphicon glyphicon-camera"></span> Tomar foto</a>-->
+                                                <!--<a class="btn btn-success" role="button"><span class="glyphicon glyphicon-open"></span> Cargar foto</a>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <label class="control-label col-xs-2">Tiempo Maximo de Oferta: *</label>
+                                        <div class="col-xs-10">
+                                            <h:outputLabel value="Ingrese fecha limite: "/>
+                                            <h:inputText value="#{ofertaController.ofertaSeleccionada.fechaLimite}" requiredMessage="#{msjApp.fechaRequiredMessage}"/>
+<!--                                            <h:outputText value="#{ofertaproductoController.selected.fechaLimite}">
+                                                <f:convertDateTime pattern="yyyy-MMM-dd" />
+                                            </h:outputText>
+                                            <pi:calendar id="button" value="#{calendarView.date11}" showOn="button" />-->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <HR width="100%" align="left"/>
+                            <div id="botonesPC" class="col-xs-10">
+                                <h:commandLink class="btn btn-primary btn3d" action="#{ofertaController.actualizarDatos()}" value="Publicar"/>
+                                <h:commandLink class="btn btn-default btn3d" action="#{ofertaproductoController.prepareList}" value="Cancelar"  immediate="true"/>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

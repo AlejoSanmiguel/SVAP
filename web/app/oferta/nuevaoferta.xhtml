@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pr="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Nueva Oferta"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: orange" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form prependId="false">
+                <div class="container form-horizontal">
+                    <div id="campos">
+                        <br/>
+
+                        <div align="center" class="container">
+                            <div id="row" class="row">
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+                                    <h:outputLabel class="control-label col-xs-2" value="Cantidad Bultos: *" for="cantidadProducto" />
+                                    <h:outputLabel value="#{usuarioController.estado}"/>
+                                    <div class="col-xs-10">
+                                        <div class="form-group">
+                                            <pr:inputText class="form-control" id="cantidadProducto" value="#{ofertaController.cantidadProducto}" title="#{language.CreateOfertaproductoTitle_cantidadProducto}" required="true" requiredMessage="#{msjApp.cantidadProductoRequiredMessage}" p:placeholder="Min. 20">
+                                                <pr:keyFilter regEx="/[\d\-\.]/"/>
+                                            </pr:inputText>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="Valor c/u: *" for="precioOferta" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="precioOferta" value="#{ofertaController.precioOferta}" title="#{language.CreateOfertaproductoTitle_precioOferta}" required="true" requiredMessage="#{msjApp.precioOfertaRequiredMessage}" p:placeholder="$"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br/>
+                            <div id="row" class="row">
+                                <center></center>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="Tipo de Papa: *" for="productoIdproducto" />
+                                        <div class="col-xs-10">
+                                            <h:selectOneMenu  converter="javax.faces.Integer" class="form-control" id="productoIdproducto" value="#{ofertaController.productoIdproducto}" title="#{language.CreateOfertaproductoTitle_productoIdproducto}" required="true" requiredMessage="#{msjApp.productoIdproductoRequiredMessage}">
+                                                <f:selectItem itemValue=" " itemLabel="Seleccione Producto"/>
+                                                <f:selectItem itemValue="1" itemLabel="Papa Criolla"/>
+                                                <f:selectItem itemValue="2" itemLabel="Papa Pastusa"/>
+                                                <f:selectItem itemValue="3" itemLabel="Papa Sabanera"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="Observaciones: *" for="detalles" />
+                                        <div class="col-xs-10">
+                                            <h:inputTextarea class="form-control" id="detalles" value="#{ofertaController.detalles}" title="#{language.CreateOfertaproductoTitle_detalles}" required="true" requiredMessage="#{msjApp.detallesRequiredMessage}" p:placeholder="..."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div id="row" class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <label class="control-label col-xs-2">Selecciona una fota para la oferta:*</label>
+                                        <div class="col-xs-10">
+                                            <div id="camuppload" class="ui-group-buttons">
+
+                                                <!--                                                <a href="http://www.jquery2dotnet.com" class="btn btn-default" role="button"><span class="glyphicon glyphicon-camera"></span> Tomar foto</a>-->
+                                                <!--<a class="btn btn-success" role="button"><span class="glyphicon glyphicon-open"></span> Cargar foto</a>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <label class="control-label col-xs-2">Tiempo Maximo de Oferta: *</label>
+                                        <div class="col-xs-10">
+                                            <h:outputLabel value="Ingrese fecha limite: "/>
+                                            <pr:outputLabel for="mask" value="Mask:" />
+                                            <pr:calendar id="mask" value="#{ofertaController.fechaLimite}" pattern="dd-MM-yyyy" mask="true" />
+
+                                            <!--<pr:calendar value="#{ofertaController.fechaLimite}"/>-->
+<!--                                            <h:outputText value="#{ofertaproductoController.selected.fechaLimite}">
+                                                <f:convertDateTime pattern="yyyy-MMM-dd" />
+                                            </h:outputText>
+                                            <pi:calendar id="button" value="#{calendarView.date11}" showOn="button" />-->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <HR width="100%" align="left"/>
+                            <div id="botonesPC" class="col-xs-10">
+                                <h:commandLink class="btn btn-primary btn3d" action="#{ofertaController.registrarOferta()}" value="Publicar"/>
+                                <h:commandLink class="btn btn-default btn3d" action="#{ofertaproductoController.prepareList}" value="Cancelar"  immediate="true"/>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>  
+
+</html>

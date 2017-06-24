@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pr="http://primefaces.org/ui">
+
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{msjApp.h1Perfil}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: orange" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:outputLabel value="Datos personales: "></h:outputLabel>
+            <h:form prependId="false">
+                <div class="container form-horizontal">
+                    <div id="campos">
+                        <br/>
+
+                        <div align="center" class="container">
+                            <div id="row" class="row">
+
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.inputNoCedula}" for="noCedula" />
+                                        <div class="col-xs-10">
+                                            <h:outputText class="form-control" id="idusuarios" value="Identificación en el sistema: #{usuarioController.usuarioSesion.idusuarios}"/>
+                                            <h:outputText class="form-control" id="noCedula" value="#{usuarioController.usuarioSesion.noCedula} #{usuarioController.usuarioSesion.tipodocumentosidDoc}" title="#{language.CreateOfertaproductoTitle_cantidadProducto}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.inputPrimerNombre}" for="primerNombre" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="primerNombre" value="#{usuarioController.primerNombre}" maxlength='30' required='true' requiredMessage="#{msjApp.inputNoCedulaRequiredMessage}" p:placeHolder="#{usuarioController.usuarioSesion.primerNombre}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="row" class="row">
+                                <center></center>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.inputSegundoNombre}" for="segundoNombre" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="segundoNombre" value="#{usuarioController.segundoNombre}" maxlength='30' p:placeHolder="#{usuarioController.usuarioSesion.segundoNombre}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.inputPrimerApellido}" for="primerApellido" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="primerApellido" value="#{usuarioController.primerApellido}" maxlength='30' p:placeHolder="#{usuarioController.usuarioSesion.primerApellido}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="row" class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.inputSegundoApellido}" for="segundoApellido" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="segundoApellido" value="#{usuarioController.segundoApellido}" maxlength='30' p:placeHolder="#{usuarioController.usuarioSesion.segundoApellido}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.inputCorreoElectronico}" for="correoElectronico" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="correoElectronico" value="#{usuarioController.correoElectronico}" maxlength='30' p:placeHolder="#{usuarioController.usuarioSesion.correoElectronico}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="row" class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.inputNumeroTelefono}" for="numeroTelefono" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="numeroTelefono" value="#{usuarioController.numeroTel}" maxlength='10' p:placeHolder="#{usuarioController.usuarioSesion.numeroTelefono}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <div id="grupo" class="form-group">
+                                        <h:outputLabel class="control-label col-xs-2" value="#{msjApp.inputContraseña}" for="contrasena" />
+                                        <div class="col-xs-10">
+                                            <h:inputText class="form-control" id="contrasena" value="#{usuarioController.contraseña}" maxlength='30' />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <HR width="100%" align="left"/>
+                            <div id="botonesPC" class="col-xs-10">
+                                <h:commandLink class="btn btn-primary btn3d" action="#{usuarioController.actualizarUsuario()}" value="Actualizar"/>
+                                <h:commandLink class="btn btn-default btn3d" action="#" value="Cancelar"  immediate="true"/>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+                <h:outputLabel value="Datos productor: "></h:outputLabel>
+
+                <h:dataTable var="usuario" value="#{usuarioController.productores}" style="border: 1px; margin: 4px;">
+                    <pr:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id: "/>
+                        </f:facet>
+                        <h:outputText value="#{usuario.idProductor}"/>
+                    </pr:column>
+                    <pr:column>
+                        <f:facet name="header">
+                            <h:outputText value="Domicilio: "/>
+                        </f:facet>
+                        <h:outputText value="#{usuario.domicilioEmpresa}"/>
+                    </pr:column>
+                </h:dataTable>
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-primary btn3d" data-toggle="modal" data-target="#myModal2">Nuevo Domicilio</button>
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Nuevo Domicilio</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h:outputLabel value="Domicilio: "/>
+                                <h:inputText value="#{usuarioController.domicilioEmpresa}"/>
+                                <br/>
+                            </div>
+                            <div class="modal-footer">
+                                <h:commandButton class="btn btn-primary btn3d" action="#{usuarioController.registrarProductor()}" value="Registrar"/>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <h:outputLabel value="Datos comprador: "></h:outputLabel>
+                <button type="button" class="btn btn-primary btn3d" data-toggle="modal" data-target="#myModal2">Nuevo Domicilio</button>
+
+                <!-- Modal -->
+                <div id="myModal2" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Nuevo Domicilio</h4>
+                            </div>
+                            <div class="modal-body">
+                                <h:outputLabel value="Domicilio: "/>
+                                <h:inputText value="#{usuarioController.domicilioEmpresa}"/>
+                                <h:outputLabel value="Telefono empresa: "/>
+                                <h:inputText value="#{usuarioController.telefonoEmpresa}"/>
+                                <h:outputLabel value="Nit empresa: "/>
+                                <h:inputText value="#{usuarioController.nitEmpresa}"/>
+                                <br/>
+                            </div>
+                            <div class="modal-footer">
+                                <h:commandButton class="btn btn-primary btn3d" action="#{usuarioController.registrarComprador()}" value="Registrar"/>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </h:form>
+            <h:outputScript library="plugins" name="jQuery/jquery-2.2.3.min.js"/>
+        </ui:define>
+    </ui:composition>  
+
+</html>

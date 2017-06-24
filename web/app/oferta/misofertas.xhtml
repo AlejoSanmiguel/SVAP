@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pr="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/WEB-INF/template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Nueva Oferta"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: orange" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form prependId="false" id="form">
+                <div class="box-body" style="margin-left: 5%; margin-right: 5%;">
+                    <table id="example2" class="table table-bordered table-striped"> 
+
+
+
+                        <b:dataTable value="#{ofertaController.ofertas}" var="opp">
+                            <b:dataTableColumn value="#{opp.idOferta}" />
+                            <b:dataTableColumn value="#{opp.detalles}" />
+                            <b:dataTableColumn value="#{opp.estado}" />
+                            <b:dataTableColumn value="#{opp.fechaLimite}"  order="asc"/>
+                            <b:dataTableColumn value="#{opp.foto}" />
+                            <b:dataTableColumn label="Opciones">
+                                <b:commandButton update=":form:amodal2" oncomplete="$('.modalPseudoClass2').modal();" class="btn btn-default fa fa-eye" tooltip="Ver" >
+                                    <f:setPropertyActionListener target="#{ofertaController.ofertaSeleccionada}" value="#{opp}"/>
+                                </b:commandButton>
+                                <b:commandButton update=":form:amodal3" oncomplete="$('.modalPseudoClass3').modal();" class="btn btn-danger fa fa-pencil a" tooltip="Editar">
+                                    <f:setPropertyActionListener target="#{ofertaController.ofertaSeleccionada}" value="#{opp}"/>
+                                </b:commandButton>
+                                <b:commandButton update=":form:amodal" oncomplete="$('.modalPseudoClass').modal();" class="btn btn-danger fa fa-trash a" tooltip="Eliminar">
+                                    <f:setPropertyActionListener target="#{ofertaController.ofertaSeleccionada}" value="#{opp}"/>
+                                    <!--<f:ajax event="click" render=":message-modal-confirm" listener="#{ofertaController.setOfertaSeleccionada(opp)}"/>-->
+                                </b:commandButton>
+                            </b:dataTableColumn>
+                        </b:dataTable>
+
+
+
+                    </table>
+                </div>
+                <b:modal id="amodal" title="Eliminar" styleClass="modalPseudoClass">
+                    <h:panelGroup id="message-modal-confirm" layout="block">
+                        <p>¿Está seguro de eliminar la oferta #{ofertaController.ofertaSeleccionada.idOferta}</p>
+                    </h:panelGroup>
+                    <f:facet name="footer">
+
+                        <b:commandButton value="Ok" look="primary" actionListener="#{ofertaController.eliminarOferta()}"/>
+
+                    </f:facet>
+                </b:modal>
+                <b:modal id="amodal2" title="Ver" styleClass="modalPseudoClass2">
+                    <h:panelGroup id="message-modal-confirm2" layout="block">
+                        <h:outputText value="Identificación Oferta:"/>
+                        <h:outputText class="form-control" value="#{ofertaController.ofertaSeleccionada.idOferta}"/>                        
+                        <h:outputText value="Detalles:"/>
+                        <h:outputText class="form-control" value="#{ofertaController.ofertaSeleccionada.detalles}"/>
+                        <h:outputText value="Cantidad:"/>
+                        <h:outputText class="form-control" value="#{ofertaController.ofertaSeleccionada.cantidadProducto}"/>
+                        <h:outputText value="Cantidad:"/>
+                        <h:outputText class="form-control" value="#{ofertaController.ofertaSeleccionada.productoIdproducto}"/>
+                        <h:outputText value="Foto:"/>
+                        <h:outputText class="form-control" value="#{ofertaController.ofertaSeleccionada.foto}"/>
+                        <h:outputText value="Estado:"/>
+                        <h:outputText class="form-control" value="#{ofertaController.ofertaSeleccionada.estado}"/>
+                        <h:outputText value="Valor:"/>
+                        <h:outputText class="form-control" value="#{ofertaController.ofertaSeleccionada.precioOferta}"/>
+                    </h:panelGroup>
+                    <f:facet name="footer">
+
+                        <b:commandButton value="Ok" look="primary"/>
+
+                    </f:facet>
+                </b:modal>
+                <b:modal id="amodal3" title="Editar" styleClass="modalPseudoClass3">
+                    <h:panelGroup id="message-modal-confirm3" layout="block">
+                        <h:outputText value="Identificación Oferta:"/>
+                        <h:inputText class="form-control" value="#{ofertaController.ofertaSeleccionada.idOferta}"/>                        
+                        <h:outputText value="Detalles:"/>
+                        <h:inputText class="form-control" value="#{ofertaController.ofertaSeleccionada.detalles}"/>
+                        <h:outputText value="Cantidad:"/>
+                        <h:inputText class="form-control" value="#{ofertaController.ofertaSeleccionada.cantidadProducto}"/>
+                        <h:outputText value="Cantidad:"/>
+                        <h:inputText class="form-control" value="#{ofertaController.ofertaSeleccionada.productoIdproducto}"/>
+                        <h:outputText value="Foto:"/>
+                        <h:inputText class="form-control" value="#{ofertaController.ofertaSeleccionada.foto}"/>
+                        <h:outputText value="Estado:"/>
+                        <h:inputText class="form-control" value="#{ofertaController.ofertaSeleccionada.estado}"/>
+                        <h:outputText value="Valor:"/>
+                        <h:inputText class="form-control" value="#{ofertaController.ofertaSeleccionada.precioOferta}"/>
+                    </h:panelGroup>
+                    <f:facet name="footer">
+
+                        <b:commandButton value="Ok" look="primary" action="#{ofertaController.actualizarDatos()}"/>
+
+                    </f:facet>
+                </b:modal>
+            </h:form>
+        </ui:define>
+    </ui:composition>  
+
+</html>
